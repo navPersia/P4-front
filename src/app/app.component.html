@@ -1,0 +1,10 @@
+<ngb-toast class="toasty"
+*ngFor="let toast of toastService.toasts"
+[header]="toast.header"
+[class]="toast.classname"
+[autohide]="true"
+[delay]="toast.delay || 5000"
+>{{toast.body}}</ngb-toast>
+<app-navigationbar></app-navigationbar>
+<!-- <app-alert></app-alert> -->
+<router-outlet></router-outlet>

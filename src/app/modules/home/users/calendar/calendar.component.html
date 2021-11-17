@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center mb-5">
+    <div class="calendar light mt-2">
+        <div class="calendar_header">
+          <h1 class="text-center header_title">Planning</h1>
+          <hr>
+        </div>
+        <div class="list-group w-100" >
+          <a *ngFor="let room of rooms" href="#detailstalk" (click)="details(room.id, room.sprekerId)" data-toggle="modal" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{room.name}}</h5>
+              <small>{{ room.startDate.split('T')[1].slice(0, 5) }} - {{ room.endDate.split('T')[1].slice(0, 5) }}</small>
+            </div>
+            <p class="mb-1">{{room.info}}</p>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="modal fade" id="detailstalk" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" *ngIf="room1 && user1">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Details Talk: {{room1.name}}</h5>
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <hr>
+      <div class="modal-body" >
+        <p>Talk by: <span class="font-weight-bold pl-3">{{ user1.username}}</span></p>
+        <p>When? <span class="font-weight-bold pl-3">{{ room1.startDate.split('T')[1].slice(0, 5) }} - {{ room1.endDate.split('T')[1].slice(0, 5) }}</span></p>
+        <p>Info: <span class="pl-3">{{room1.info}}</span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <div id="menu">
+    <p class="welcome">{{roomName}}<b></b></p>
+    <p class="logout"><a id="exit" (click)="exitChat()">Exit Room</a></p>
+    <p class="btn btn-secondary ml-2 pl-1 pr-1"><a id="poll" (click)="openPoll()">Poll</a></p>
+  </div>
+
+  <div id="chatbox">
+    <p *ngFor="let mess of messages">{{ mess.role }} - {{ mess.username }} - {{ mess.messaging }}</p>
+  </div>
+
+  <form #f="ngForm" (ngSubmit)="sendMessage(f.value)">
+    <input name="message" ngModel type="text" id="message" required/>
+    <input name="submitmsg" type="submit" id="submitmsg" value="Send"/>
+  </form>
+
+</div>

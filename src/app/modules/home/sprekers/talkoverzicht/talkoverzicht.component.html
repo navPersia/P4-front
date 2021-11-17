@@ -1,0 +1,11 @@
+<div class="container">
+  <button [routerLink]="['/']" style="position: fixed; left: 15px; top: 10px;" type="button" class="btn btn-secondary"><i class="far fa-arrow-alt-circle-left"></i></button>
+    <h1 class="mt-2 text-center">Overzicht talks</h1>
+    <hr>
+    <div *ngFor="let poll of polls" class="card" style="width: 95% mx-auto;">
+        <div class="card-body">
+          <h5 class="card-title">{{ poll.question }}</h5>
+          <a [routerLink]="['/spreker/detailstalk']" class="btn btn-primary">Room instellen</a>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,125 @@
+<div class="container">
+  <button [routerLink]="['/admin/home']" style="position: fixed; left: 15px; top: 10px;" type="button"
+          class="btn btn-secondary"><i class="far fa-arrow-alt-circle-left"></i></button>
+  <h1 class="text-center mt-2">Users</h1>
+  <hr>
+  <div class="text-center mb-2">
+    <a href="#addusermodal" data-toggle="modal" class="btn btn-success mr-1 pl-3 pr-3">New User</a>
+  </div>
+
+  <table class="table table-sm">
+    <thead>
+    <tr>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Role</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.username }}</td>
+      <td>{{ user.password }}</td>
+      <td>{{ user.role }}</td>
+      <td>
+        <a (click)="editModal(content,user)" class="edit btn btn-sm btn-warning"><i class="fas fa-user-edit"
+                                                                                    title="Edit"></i></a>
+        <a (click)="delete(user.id)" class="ml-1 delete btn-sm btn btn-danger"><i class="fas fa-user-times"
+                                                                                  data-toggle="tooltip"
+                                                                                  title="Delete"></i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- create Modal HTML -->
+<div id="addusermodal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form #f="ngForm" (ngSubmit)="signUp(f.value)">
+        <div class="modal-header">
+          <h4 class="modal-title">Add User</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" ngModel name="username" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="text" ngModel name="password" class="form-control" required>
+          </div>
+          <label for="role" class="form-label">Role</label>
+          <select id="role" ngModel name="role" class="form-select">
+            <option value="Admin">Admin</option>
+            <option value="Spreker">Spreker</option>
+            <option value="User">User</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-secondary btn-block" data-dismiss="modal" value="Cancel">
+          <input type="submit" id="btnSave" class="btn btn-success btn-block" value="Create User">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- edit Modal HTML -->
+<ng-template #content let-modal>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form #f="ngForm" (ngSubmit)="modify(user.id, f.value)">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit User</h4>
+          <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" [(ngModel)]="user.username" name="username" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="text" [(ngModel)]="user.password" name="password" class="form-control" required>
+          </div>
+          <label for="role" class="form-label">Role</label>
+          <select id="role" ngModel name="role" class="form-select">
+            <option value="Admin">Admin</option>
+            <option value="Spreker">Spreker</option>
+            <option value="User">User</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-secondary btn-block" (click)="modal.dismiss('Cross click')"
+                 value="Cancel">
+          <input type="submit" id="btnSave" class="btn btn-success btn-block" value="Modify User">
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Delete Modal HTML -->
+<div ng-show="showModal" id="deletemodal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h4 class="modal-title">Delete User</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete these users?</p>
+          <p class="text-warning"><small>This action cannot be undone.</small></p>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+          <input type="submit" class="btn btn-danger" data-dismiss="modal" value="Delete">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container text-center">
+  <h1 class="mt-2">Poll</h1>
+  <hr>
+  <h2>{{poll.question}}</h2>
+  <form #f="ngForm" (ngSubmit)="answer(f.value)">
+    <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
+      <input ngModel type="radio" class="btn-check" name="btnradio" value="{{options[0]}}" id="btnradio1"
+        autocomplete="off" checked>
+      <label class="btn btn-outline-primary" for="btnradio1">{{options[0]}}</label>
+
+      <input ngModel type="radio" class="btn-check" name="btnradio" value="{{options[1]}}" id="btnradio2"
+        autocomplete="off">
+      <label class="btn btn-outline-primary" for="btnradio2">{{options[1]}}</label>
+
+      <input ngModel type="radio" class="btn-check" name="btnradio" value="{{options[2]}}" id="btnradio3"
+        autocomplete="off">
+      <label class="btn btn-outline-primary" for="btnradio3">{{options[2]}}</label>
+      <button type="submit" class="btn btn-success">Antwoord</button>
+      <button (click)="collectanswers()" class="btn btn-secondary mt-2">Refresh</button>
+
+    </div>
+  </form>
+
+  <div *ngIf="authService.isSpreker()">
+    <h5>Answers:</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Option:</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <td>{{options[0]}}</td>
+        <td>{{count1}}</td>
+      </tr>
+      <tr>
+        <td>{{options[1]}}</td>
+        <td>{{count2}}</td>
+      </tr>
+      <tr>
+        <td>{{options[2]}}</td>
+        <td>{{count3}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a [routerLink]="['/chat']" class="btn btn-warning btn-block onderaan">Chat</a>
+</div>

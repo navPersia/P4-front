@@ -1,0 +1,9 @@
+.onderaan {
+    position: fixed;
+    bottom: 10%;
+    left: 5;
+    right: 5;
+    width: 90%;
+    border: 1px solid black;
+    font-weight: bold;
+}

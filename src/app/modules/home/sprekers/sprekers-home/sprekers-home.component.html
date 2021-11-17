@@ -1,0 +1,25 @@
+<div class="container-fluid mb-5">
+    <button [routerLink]="['/home']" style="position: fixed; left: 15px; top: 10px;" type="button" class="btn btn-secondary"><i class="far fa-arrow-alt-circle-left"></i></button>
+    <h1 class="text-center mb-3 mt-3">My talks</h1>
+    
+    <hr>
+
+    <table class="table table-sm">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let room of rooms">
+        <td>{{ room.name }}</td>
+        <td>
+          <a (click)="editroom(room)" class="edit btn btn-sm btn-warning"><i class="fas fa-user-edit" title="Edit Room"></i></a>                                                                     
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>

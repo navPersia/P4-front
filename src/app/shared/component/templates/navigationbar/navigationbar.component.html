@@ -1,0 +1,56 @@
+<header class="header">
+    <div class="container">
+      <nav class="bottom-nav">
+
+        <div class="bottom-nav-item" *ngIf="authService.isAdmin()">
+          <div class="bottom-nav-link" [routerLink]="['admin/home']">
+            <i class="fas fa-user"></i>
+            <span>Admin</span>
+          </div>
+        </div>
+
+        <div class="bottom-nav-item" *ngIf="authService.isSpreker()">
+          <div class="bottom-nav-link" [routerLink]="['spreker/home']">
+            <i class="fas fa-user"></i>
+            <span>Spreker</span>
+          </div>
+        </div>
+
+        <div class="bottom-nav-item" *ngIf="authService.isLoggedIn()">
+            <div class="bottom-nav-link" [routerLink]="['calendar']">
+                <i class="fas fa-calendar-week"></i>
+              <span>Calender</span>
+            </div>
+          </div>
+
+          <div class="bottom-nav-item" *ngIf="authService.isLoggedIn()">
+            <div class="bottom-nav-link" [routerLink]="['home']">
+                <i class="fas fa-calendar-week"></i>
+              <span>Home</span>
+            </div>
+          </div> 
+
+        <div class="bottom-nav-item" *ngIf="authService.isLoggedIn()">
+          <div class="bottom-nav-link" [routerLink]="['alltalks']">
+            <i class="far fa-question-circle"></i>
+            <span>Talks</span>
+          </div>
+        </div>
+
+        <div class="bottom-nav-item" *ngIf="authService.isLoggedIn()" (click)="authService.logout()">
+          <div class="bottom-nav-link" [routerLink]="['']">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </div>
+        </div>
+
+        <div class="bottom-nav-item" *ngIf="!authService.isLoggedIn()" (click)="authService.logout()">
+          <div class="bottom-nav-link" [routerLink]="['login']">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Login</span>
+          </div>
+        </div>
+
+      </nav>
+    </div>
+  </header>

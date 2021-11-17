@@ -1,0 +1,25 @@
+<div class="container">
+    <button [routerLink]="['/']" style="position: fixed; left: 15px; top: 10px;" type="button" class="btn btn-secondary"><i class="far fa-arrow-alt-circle-left"></i></button>
+    <h1 class="text-center mt-2">Create new poll</h1>
+    <hr>
+    <form action="">
+        <div class="form-group">
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Type of Question</label>
+            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                <option selected>Choose...</option>
+                <option value="1">Multiple Choice</option>
+                <option value="2">Open Question</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <p>Question:</p>
+        <div class="form-group">
+            <input class="form-control" type="text" id="question" placeholder="Question?">
+        </div>
+        <p>Options:</p>
+        <div class="form-group">
+            <input class="form-control" type="text" id="options" placeholder="Options?">
+        </div>
+        <button type="submit" class="btn btn-primary my-1">Submit</button>
+    </form>
+</div>
